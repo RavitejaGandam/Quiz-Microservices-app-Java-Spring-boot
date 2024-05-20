@@ -1,9 +1,10 @@
 package com.grt.quiz.repository;
 
-import com.grt.quiz.entity.QuizEntity;
+import com.grt.quiz.entity.QuestionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public interface QuizRepository extends JpaRepository<QuizEntity,Long> {
+@Repository
+public interface QuestionRepository extends JpaRepository<QuestionEntity,Integer> {
 }
