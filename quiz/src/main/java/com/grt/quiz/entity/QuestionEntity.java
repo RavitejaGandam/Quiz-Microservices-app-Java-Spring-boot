@@ -11,7 +11,7 @@ import lombok.Data;
 public class QuestionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Integer id;
+    private Integer id;
     private String questionTitle;
     private String option1;
     private String option2;
