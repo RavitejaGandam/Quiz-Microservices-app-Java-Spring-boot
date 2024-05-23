@@ -2,6 +2,8 @@ package com.grt.Question_service.contoller;
 
 
 import com.grt.Question_service.entity.QuestionEntity;
+import com.grt.Question_service.entity.QuestionWrapper;
+import com.grt.Question_service.entity.Response;
 import com.grt.Question_service.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,4 +33,20 @@ public class QuestionController {
          return ResponseEntity.ok().body(questionService.addQuestion(questionEntity));
     }
 
+    @GetMapping("/generate")
+    public ResponseEntity<List<Integer>> getQuestionsForQuiz
+            (@RequestParam String categoryName,@RequestParam Integer numQuestions){
+        return questionService.getQuestionsForQuiz(categoryName,numQuestions);
+    }
+
+    @PostMapping("/getQuestions")
+    public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId
+            (@RequestBody List<Integer> questionIds){
+        return questionService.getQuestionsFromId(questionIds);
+    }
+
+    @PostMapping("/getScore")
+    public ResponseEntity<Integer> getScore(@RequestBody List<Response> responses){
+        return questionService.getScore(responses);
+    }
 }
