@@ -1,12 +1,11 @@
 package com.grt.quiz.entity;
 
-
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class QuizResponse {
+public class Response {
     private Integer id;
-    private String responses;
+    private String response;
 }
