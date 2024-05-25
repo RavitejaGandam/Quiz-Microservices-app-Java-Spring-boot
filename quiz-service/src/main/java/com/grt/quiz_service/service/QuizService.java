@@ -35,45 +35,20 @@ public class QuizService {
         return new ResponseEntity<>("sucess", HttpStatus.CREATED);
     }
 
-//    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(Integer id) {
-//        Optional<QuizEntity> quiz = quizRepository.findById(id);
-//        List<QuestionEntity> questionEntities = quiz.get().getQuestions();
-//        List<QuestionWrapper>questionForUser = new ArrayList<>();
-//        for(QuestionEntity q : questionEntities){
-//            QuestionWrapper qw = new QuestionWrapper(q.getId(),q.getQuestionTitle(),q.getOption1(),q.getOption2(),q.getOption3(),q.getOption4());
-//            questionForUser.add(qw);
-//        }
-//        return new ResponseEntity<>(questionForUser,HttpStatus.OK);
-//    }
-
-    // by using Stream API
-
-//    public ResponseEntity<List<QuestionWrapper>>getQuizQuestions(Integer id){
-//        Optional<QuizEntity> quiz = quizRepository.findById(id);
-//        if(!quiz.isPresent()){
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//       List<QuestionWrapper> questionsForUsers =
-//                .map(q->new QuestionWrapper(q.getId(),q.getQuestionTitle(),q.getOption1(),q.getOption2(),q.getOption3(),q.getOption4()))
-//                .collect(Collectors.toList());
-//        return new ResponseEntity<>(questionsForUsers,HttpStatus.OK);
-//    }
+    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(Integer id) {
+        Optional<QuizEntity> quiz = quizRepository.findById(id);
+        List<Integer> questionsIds = quiz.get().getQuestionIds();
+        ResponseEntity<List<QuestionWrapper>> questions=quizInterface.getQuestionsFromId(questionsIds);
+        return questions;
+    }
 
 
-  //  public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
-//        QuizEntity quiz = quizRepository.findById(id).get();
-//        List<QuestionEntity> questions = quiz.getQuestions();
- //       int right = 0;
-//        int i = 0;
-//        for(Response response : responses){
-//            if(response.getResponse().equals(questions.get(i).getRightAnswer()))
-//                right++;
-//            System.out.println("value of right "+right);
-//            i++;
-//            System.out.println("value of i " + i);
-//        }
-  //      return new ResponseEntity<>(right, HttpStatus.OK);
-    //}
+
+
+    public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+        ResponseEntity<Integer> score = quizInterface.getScore(responses);
+        return score;
+    }
 
 
 
