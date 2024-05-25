@@ -35,19 +35,34 @@ public class QuizService {
         return new ResponseEntity<>("sucess", HttpStatus.CREATED);
     }
 
+<<<<<<< HEAD
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(Integer id) {
         Optional<QuizEntity> quiz = quizRepository.findById(id);
         List<Integer> questionsIds = quiz.get().getQuestionIds();
         ResponseEntity<List<QuestionWrapper>> questions=quizInterface.getQuestionsFromId(questionsIds);
+=======
+    // by using Stream API
+
+    public ResponseEntity<List<QuestionWrapper>>getQuizQuestions(Integer id){
+        Optional<QuizEntity> quiz = quizRepository.findById(id);
+        List<Integer> questionsIds = quiz.get().getQuestionIds();
+        ResponseEntity<List<QuestionWrapper>> questions = quizInterface.getQuestionsFromId(questionsIds);
+>>>>>>> 6c5b272427460c921b0e561cb5df9b035c4e47fc
         return questions;
     }
 
 
+<<<<<<< HEAD
 
 
     public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
         ResponseEntity<Integer> score = quizInterface.getScore(responses);
         return score;
+=======
+    public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+      ResponseEntity<Integer>  score =  quizInterface.getScore(responses);
+      return score;
+>>>>>>> 6c5b272427460c921b0e561cb5df9b035c4e47fc
     }
 
 
