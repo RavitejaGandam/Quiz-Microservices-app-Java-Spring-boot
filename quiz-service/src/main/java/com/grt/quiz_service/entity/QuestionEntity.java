@@ -1,4 +1,4 @@
-package com.grt.quiz.entity;
+package com.grt.quiz_service.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

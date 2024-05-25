@@ -1,8 +1,9 @@
-package com.grt.quiz.contoller;
+package com.grt.quiz_service.contoller;
 
-import com.grt.quiz.entity.QuestionWrapper;
-import com.grt.quiz.entity.Response;
-import com.grt.quiz.service.QuizService;
+import com.grt.quiz_service.entity.QuestionWrapper;
+import com.grt.quiz_service.entity.QuizDto;
+import com.grt.quiz_service.entity.Response;
+import com.grt.quiz_service.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,19 +17,20 @@ public class QuizController {
     QuizService quizService;
 
     @PostMapping("/create")
-    public ResponseEntity<String> createQuiz(@RequestParam String category,@RequestParam int numsQ,@RequestParam String title){
-       return quizService.createQuiz(category, numsQ,title);
+    public ResponseEntity<String> createQuiz
+            (@RequestBody QuizDto quizDto){
+       return quizService.createQuiz(quizDto.getCategoryName(),quizDto.getNumQuestions(),quizDto.getTitle());
     }
 
-    @GetMapping("get/{id}")
-    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
-        return quizService.getQuizQuestions(id);
-    }
+//    @GetMapping("get/{id}")
+//    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
+//        return quizService
+//    }
 
-    @PostMapping("submit/{id}")
-    public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses){
-        return quizService.calculateResult(id, responses);
-    }
+//    @PostMapping("submit/{id}")
+//    public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses){
+//        return quizService.calculateResult(id, responses);
+//    }
 
 
 

@@ -1,4 +1,4 @@
-package com.grt.quiz.entity;
+package com.grt.quiz_service.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,6 +13,6 @@ public class QuizEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-    @ManyToMany
-    private List<QuestionEntity> questions;
+    @ElementCollection
+    private List<Integer> questionIds;
 }

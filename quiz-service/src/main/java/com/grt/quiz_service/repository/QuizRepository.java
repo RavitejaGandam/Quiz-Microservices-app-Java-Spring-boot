@@ -1,6 +1,7 @@
-package com.grt.quiz.repository;
+package com.grt.quiz_service.repository;
 
-import com.grt.quiz.entity.QuizEntity;
+
+import com.grt.quiz_service.entity.QuizEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
