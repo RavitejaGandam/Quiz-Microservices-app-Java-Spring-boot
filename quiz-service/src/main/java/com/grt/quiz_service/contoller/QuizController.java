@@ -22,15 +22,15 @@ public class QuizController {
        return quizService.createQuiz(quizDto.getCategoryName(),quizDto.getNumQuestions(),quizDto.getTitle());
     }
 
-//    @GetMapping("get/{id}")
-//    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
-//        return quizService
-//    }
+    @GetMapping("get/{id}")
+    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
+        return quizService.getQuizQuestions(id);
+    }
 
-//    @PostMapping("submit/{id}")
-//    public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses){
-//        return quizService.calculateResult(id, responses);
-//    }
+    @PostMapping("submit/{id}")
+    public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses){
+        return quizService.calculateResult(id, responses);
+    }
 
 
 
